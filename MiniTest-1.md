@@ -72,4 +72,11 @@ We consider os as
         - General Registers
             - Instruction registers
             - Data Registers 
-        -
+        - Program Counter(PC)\- save address of next instruction (virtual address)
+        - Stack pointers - address of top of stack for currently running process 
+        - Program status word(psw) \- save control information for each process (condition bits, cpu priority, the mode..)
+- The operating system must know the content of each register for a process. (a process works for different jobs)
+- When a process stop running by changing state (three states: running, ready, block) from running to ready or running to block, os saves content of each register (snapshot of contents of cpu) for the process in process table (or process control block) which need to be used to finish its job
+- A CPU performance can be improved by using pipelined design for fetch, decode and execute process. since fetching data takes more than execution
+- A CPU may have multiple cores. A CPU chip with multiple calculation units.
+- WHen a I/O device is ready to recieve or send data through bus, it interrupts operating system by sending signal
