@@ -53,6 +53,7 @@ We consider os as
 - smart phone op
 ## Lecture Note 2
 ### Computer System Architecture
+---
 #### CPU
 - The CPU is the brain of the computer
 - each cpu has a specific instruction set that is used to execute each instruction.
@@ -79,4 +80,35 @@ We consider os as
 - When a process stop running by changing state (three states: running, ready, block) from running to ready or running to block, os saves content of each register (snapshot of contents of cpu) for the process in process table (or process control block) which need to be used to finish its job
 - A CPU performance can be improved by using pipelined design for fetch, decode and execute process. since fetching data takes more than execution
 - A CPU may have multiple cores. A CPU chip with multiple calculation units.
+---
+## Interrupts
 - WHen a I/O device is ready to recieve or send data through bus, it interrupts operating system by sending signal
+     - IO operation, the device driver load a instruction (read or write) to device controllers instruction register.
+     - Controller start transfer of data from device to its local buffer (read: transfer data from bus to local buffer)
+     - once complete check any error then the device controller informs the device driver that ready to transfer.
+     - then device driver gives control to other parts of op
+- Hardware interrupt any time through signal to CPU by the system bus
+- Key part of Operating systems and hardware interact
+- when cpu interrupted, stops current task and transfers execution to fixed location that the service routine for interrupt is located
+- Interrupt service routine executes, when done, cpu resume interrupted task
+- operating system maintain a table of pointers (interrupt vector) in low memory  to hold address of interrupt service routine
+- cpu hardware has Interrupt request line that senses after executing every CPU instruction
+- when cpu detects that a controller has triggered a signal on the line it reads the interrupt number and jumpts to the interrupt handler routine, it uses the interrupt number as an index in the interrupt vector
+- A interrupt handler starts execution and might create output and return the cpu to the exection state prior to the interrupt
+    1. device controller raised an interrupt by asserting a signal on the interrupt request line
+    2. the cpu catches the interrupt and dispatches it to the interrrupt handler
+    3. the interrupt handler clears the interrupt by servicing the device
+    4. return the state prior to interrupt
+- Cpus have 2 interrupt request lines 
+    - non-maskable interrupt line - reserved for event such as unrecoverable hardware error
+    - maskable interupt line 0 used by device controllers to request service
+- intel processor event-vector table
+     - starting section for hardware error conditions
+     - end section for device generated interrupts
+
+- TO wrap, interrupts are used throughout modern operating systems to handle asynchronous events
+- Device controllers and hardware faults raise interrupts
+- to prioritize work there is interrupt priorities.
+- efficient interrupt handling is needed for good system performance, time-sensitive
+---
+## Memory
