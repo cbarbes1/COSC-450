@@ -112,3 +112,18 @@ We consider os as
 - efficient interrupt handling is needed for good system performance, time-sensitive
 ---
 ## Memory
+- The CPU can load instructions only from RAM, so any program must first be loaded into memory from the secondary memory to run
+- Storage hierarchy
+    - Registers in CPU (volatile) valed
+    - Cache memory - volatile
+    - Main memory volatile - RAM (random access memory)
+        - DRAM (dynamic ram) - build with capacitors
+        - SRAM (static ram) - build with logic gates
+    - secondary memory (non-volatile)
+        - HDD(Hard Disk Drive) - rigid metal or glass platters covered with magnetic recording material
+        - SSD(solid state drive) - floating point transistors
+        - magnetic tapes
+        - usb
+## Input / output device 
+- large amount of op is managing io devices
+- the form of interrupt
