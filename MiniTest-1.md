@@ -153,3 +153,39 @@ We consider os as
     - Peripheral Component Interconnect (PCI) - is available in 32 and 64 bit versions, most popular bus architecture
     - Accelerated Graphics Port (AGP) - designed for faster screen display one agp slot on motherboard
 ### Serial Buses
+- **Advantages and disadvantages** of serial buses
+    - Disadvantage - it offers slower data communication between device
+    - advantages - support long distance comm. it cost less than parallel buses
+- **Serial Buses**
+    - **Universal serial bus(USB)** - one usb port connects up to 127 peripherals the first version of USB was designed for low speed connections
+    - **FireWire (IEEE 1394)** - FireWire connects up to 63 peripheral devices and has been mostly used for digital camera connection
+### Single Processor Systems - Single Core one CPU
+- Core - the component ro execute instruction and registers for storing data locally.
+- special purpose processor - limited instruction set, not run processes, specific for a device?
+- Os manage special purpose processor by sending info about their next task and monitor their status Ex) DMA, A processor in the keyboard to convert the key strokes into code to be sent to CPU
+### MultiProcessor Systems
+- The primary advantage of multiprocessor systems is increased throughtput. we expect to get more work done in less time by increasing the number of processors.
+- THe speedup ratio with n processors is less than N, bc of poss extra overhead for communicating between cpu for any calculation
+- Def has evolved: multiprocessor now include multicore system, multi cores reside on one chip
+- multicore systems can be more efficient than multiple chips with single cores: on chip comm is faster than off chip
+- one chip uses significantly less power than multiple single core chips important issue for mobile devices and laptops
+- Multiprocessor System Types
+- Symmetric multiprocessing (smp) - "One BIG Memory"
+    - cpu has own set of registers and cache memory, perform tasks with os functions and user processes. All processors share a common physical memory over the system bus
+    - Virtuall all modern os support multicore smp systems
+    - adding cpu to a multiprocessor systsem will increase computing power then after too many added then the system bus becomes a bottleneck.
+- Non-Uniform memory access (NUMA) "One physical memory shared"
+    - Each cpu has own local memory that is accessed via small fast local bus
+    - cpu connected to shared system interconnect, so that all cpus share one physical address space
+    - The advantage: when a cpu accesses its local memory, not only fast, no contention over the system interconnect
+    - A potential drawback: increased latency when a cpu must access remote memory across the system interconnect, creating a possible performance penalty os need careful cpu scheduling and memory management to reduce overhead
+- Clusterd Systems
+    - Two or more individual systems are connected locally (LAN) an run as one system - loosely coupled
+    - Clustering used to provide high availability service- continue even if one fail
+    - High availability can be obtained by adding a level of redundancy in the system
+        - A layer of cluster software runs on the cluster nodes.
+        - Each node can monitor one or more of the other (over the network)
+        - if the monitored machin fails, the monitoring machin can take ownership of its storage and restart the applications that were running on the failed machine
+    - symmetric clustering - each machine run same thing and monitor neighbor one machine take over the job that fails
+    - Asymmetric clustering - one machine is in hot-standby mode to watch the others
+    - 
