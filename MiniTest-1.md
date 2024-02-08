@@ -125,5 +125,31 @@ We consider os as
         - magnetic tapes
         - usb
 ## Input / output device 
-- large amount of op is managing io devices
-- the form of interrupt
+- large amount of op is managing i/o devices, important for reliability, performance of a system 
+- the form of interrupt-driven I/O fine for small data but high overhead when used on bulk data movement.
+- The solution: DMA (Direct Memory Access). DMA controller can handle I/O independent from the cpu
+- DMA capability provided by some computer bus architectures that allows data to be sent directly form an attached device (s.a a disk drive) to the memory
+- CPU is freed from involvement with the data transfer, thus speeding up overall computer operation.
+- Operating System controls all I/O devices by
+    - Issue commands (read/write) to devices
+    - Catch interrupts from devices - when devices are ready to send or recieve data.
+    - Handle Error
+- OS also provide interface between the devices and the rest of the system.
+- Most of I/O devices consist of a mechanical component, an electronic component and device driver.
+    - **Mechanical Components** - device itself
+    - **Electrical Components**
+         - Device Controller (adapter)
+         - on personal computer, it takes the form of a chip on the parent board or a printed circuit card that can be inserted into a pci exansion slot.
+    - **Device Driver (Software)** - THe standard interface between device controller and operating system
+## Buses
+- The bus in a PC is the common pathway between the CPU and peripheral devices
+    - **Parallel buses** use slots on the motherboard and provide multiple lines for data (32 bits, 64 bits) between the cpu and peripheral card. cards plug into the bus inside the cabinet.
+    - **Serial Buses** have external ports, and the cable that plugs into them can connect to multiple devices
+### Parallel Buses
+- Advantage and Disadvantage of parallel buses
+    - Advantage - Fast data comm between devices
+    - Disadvantage - It supports short distance comm due to crosstalk between the parallel line. cost more due to multi line and more pins
+- Parallel Buses:
+    - Peripheral Component Interconnect (PCI) - is available in 32 and 64 bit versions, most popular bus architecture
+    - Accelerated Graphics Port (AGP) - designed for faster screen display one agp slot on motherboard
+### Serial Buses
