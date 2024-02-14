@@ -219,4 +219,62 @@ We consider os as
     - Ring 3: user mode
 - System calls provide the means for a user program to ask the operating system to perform tasks reserved for the operating system  on the user programs behalf
 - A system call usually is like a trap to a specific location in the interrupt vector. can be executed by a generic trap instruction, although some systems have a specific system call instruction to invoke a system call
-- WHen a system call is called, control passes through the interrupt vector to a service routine in the operating system, the module bit is set to kernel mode. 
+- WHen a system call is called, control passes through the interrupt vector to a service routine in the operating system, the module bit is set to kernel mode.
+- The system call service routine is a part of the operating system. The kernel examines the interrupting instruction to determine what system call has occurred: a parameter indicates what type of service the user program is requesting
+- The kernel verifies that the parameters are correct and legal, executes the request, and returns control to the instruction following the system call
+- System Call
+    - Step 1~ 3: push parameters onto the stack
+    - Step 4: actual function call
+    - Step 5: fetch read instruction to IR in CPU
+    - Step 6: (trap) change mode to kernel
+    - Step 7: dispatch system call service routine (or handler) number (read)
+    - Step 8: run system call service routine (or handler)
+    - step 9, 10: changge mode to user result might be saved in a register
+    - Step 11: clear stack by increment stack pointer
+- Timer
+    - Operating System maintain control over the cpu
+    - A process cannot keep cpu as it need. Cpu is always assigned to a process with timer.
+    - A timer can be set to interrupt the computer after a specified period. The period may be fixed or variable
+    - When time period is expired before finishing its job, the process must wait for CPU time in ready queue
+- OS as a Resource Manager
+    - Process (& thread) management
+    - Memory Management
+    - File Managements
+    - Input / Output System Management
+    - Deadlock Managements
+    - Cache Management
+- **Process Management**
+    - The operating System is responsible for the following activities for process management:
+        - Creating and deleting both user and system processes
+        - Scheduling Processes (and threads) on the CPUs
+        - Suspending and Resuming processes (and threads)
+        - Providing Mechanisms for process synchronization ( semaphore, mutex, conditional variables,..)
+        - Providing mechanisms for process communication (PIPE, Message Queue, Shared Memory, FIFO, Socket, ..)
+- **Memory Management**
+    - For a program to be executed, it must be mapped to absolute addresses and loaded into memory
+    - As the program executes, it accesses program instructions and data from memory by generating these absolute addresses
+    - The CPU reads instruction from main memory during the instruction-fetch cycle and both reads and writes data from main memory during the data-fetch cycle (on a von neumann architure).
+    - Eventually, Thre program terminates, its memory space is declared available, and the next program can be loaded and executed.
+    - The operating system is responsible for the following activities for memory management:
+        - Keeping track of which parts of memory are currently being used and which process is using them (for supporting multiprogramming)
+        - Allocating and deallocating memory space as needed
+        - Deciding which processes (or parts of processes) and data to move into and out of memory(virtual memory)
+     
+- **File Management**
+    - OPerating system provides a uniform, logical view of information storage for user to save a file. A file is a collection of related information defined by its creator.
+    - The operating system implements the abstract concept of a file by managing mass storage media and the devices that control them
+    - In addition, files are normally organized into directories to make them easier to use
+    - If a system support mulit-user, OS need control which user may access a file and how that user may access it( for example, read, write, append).
+    - The operating systemm 
+- **Mass-Storage Management**
+- **Cache Management**
+- **Deadlock Management**
+- **Input / Output**
+- **Structure of Operating System**
+    - Operating system structure
+- **Monolithic System**
+- **Layered System**
+- **Microkernels**
+- **Virtual Machine**
+- **Protection and security**
+- **Virtualization**
