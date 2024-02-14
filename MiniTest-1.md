@@ -4,12 +4,17 @@
 `A protected software provided interface between hardware and software`
 
 *Macroscopic View* - Processor, Memory, io devices
+
 Physical Devices - Chips, wires, etc
+
 Micro architecture - groups of physical devices that form functional units
+
 Machine Language - Execute some set of instructions
+
 **Von Neumann Bottleneck** - The processor and memory are seperate. since the speed of transfer is slower than calculation speed there is a bottleneck. This would be a throughput limitations. Throughput is how much data can be transferred in a certain amount of time.
 
 The Microprocessor's (CPU) main task is execute instructions.
+
 The instruction cycle is needed to understand the function and operation of the microprocessor which is controlled by the os
 
 #### Fetch Cycle
@@ -188,4 +193,30 @@ We consider os as
         - if the monitored machin fails, the monitoring machin can take ownership of its storage and restart the applications that were running on the failed machine
     - symmetric clustering - each machine run same thing and monitor neighbor one machine take over the job that fails
     - Asymmetric clustering - one machine is in hot-standby mode to watch the others
-    - 
+    - Clusters can provide a way to do high performance computing
+    - To take advantage of this system, The program must be written correctly in the fashion that works best for clustering
+## Multiprogramming
+- Hold several processes in memory at the same time, provide concurrency for processes
+- The operating system (short term scheduler) picks one of process in ready queue and let it use an available CPU to execute its job
+- Eventaully, the process may have to wait for some task, such as an I/O operation, to complete
+- Multiprogramming increases CPU utilization, as well as keeping users satisfied, by organizing programs so that the cpu always has one to execute
+- Multitasking is a logica extension of multiprogramming
+- Multitasking is allowing a user to perform more than one computer task at a time
+- The operating system is able to keep track of where you are in these tasks and go from one to the other without losing information
+- is it possible without multiprogramming?
+## Dual - Mode and Multimode operation
+- Since the os and its users share resources, an OS must ensure that malicious program cannot cause other programs to execute incorrectly
+- In order to ensure the proper execution of the system, must distinguish between  the execution of OS code and user code (kernel mode and user mode)
+- The approach taken by most computer systems is to provide hardware support that allows differentiation among various modes of execution
+- A bit, called the mode bit, is added to the hardware of the computer indicate the current mode: kernel(0) or user(1)
+- When a process request a service via system call, the system must change mode from user to kernel mode to fulfill the request
+- The dual mode of operation provides us with the means for protecting the operating system from errant users (or hackers)
+- This protection can be accomplished by designating some of the machine instructions (may cause harm as privileged instructions) to be executed only in kernel mode
+- The concept of modes can be extended to more than two modes
+- ex) intel processors have four seperate protection rings
+    - Ring 0: kernel mode
+    - Ring 1 and 2: used for various OS service rarely used
+    - Ring 3: user mode
+- System calls provide the means for a user program to ask the operating system to perform tasks reserved for the operating system  on the user programs behalf
+- A system call usually is like a trap to a specific location in the interrupt vector. can be executed by a generic trap instruction, although some systems have a specific system call instruction to invoke a system call
+- WHen a system call is called, control passes through the interrupt vector to a service routine in the operating system, the module bit is set to kernel mode. 
