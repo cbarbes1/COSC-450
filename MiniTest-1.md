@@ -265,16 +265,122 @@ We consider os as
     - The operating system implements the abstract concept of a file by managing mass storage media and the devices that control them
     - In addition, files are normally organized into directories to make them easier to use
     - If a system support mulit-user, OS need control which user may access a file and how that user may access it( for example, read, write, append).
-    - The operating systemm 
+    - The operating system is responsible for the following activities for file management
+        - Creating and Deleting Files
+        - Creating and Deleting directories to organize files
+        - Supporting primitives for file manip
+            - Read, write, open, lseek
+        - Mapping files onto mass storage (HDD, SSD, USB, Tape)
+        - Backing up files on stable (nonvolatile) storage media
 - **Mass-Storage Management**
+    - Modern Computer System use multiple types of secondary storages (HDD, SSD, USB, Magnetic Tape)
+    - The operating system is responsible for the folling activities for secondary storage management
+        - Mounting and Unmounting
+        - Free-space management
+        - Storage Allocation
+        - Disk Scheduling (in HDD)
+        - Partitioning
+        - Protections
 - **Cache Management**
+    - Cache is a hardware or software component that stores data which might be used again soon. the data stored in a cache might be the result of an earlier computation of a copy of data stored elsewhere
+    - A cache hit occurs when the requested data can be found in a cache, while a cache miss occurs when it cannot.
+    - Because caches have linited size, cahce managemment is an important design problem
+    - Careful selection of the cache size and of a replacement policy (with cache miss) can result in greatly increased performance.
+    - The movement of information between levels of a storage hierarchy may be either explicit or implicit, depending on the hardware design and the controlling operating system software
+        - For instance, data transfer from cache to CPU and registers is usually a hardware function, with no operating system intervention
+        - Data transfer of data from disk to memory is usually controlled by the operating system
 - **Deadlock Management**
+    - Deadlocks between processes happen from limited number of resources which must be shared between processes
+    - Processes are sharing resources for finishing their job
+    - Some processes might need more than one resources hold to finish its job ( copy data fromm disk to usb drive)
+    - Resources Allocation Graph
+        - There are two processes P1 and P2. There are two resources R1 and R2
+        - Both P1 and P2 need resources R1 and R2 to finish their job
+    ```mermaid
+        graph TD;
+            P1-->R1;
+            P2-->R2;
+            R3-->P3;
+            R4-->P4;
+            R5-->P5;
+            R6-->P6;
+            P5-->R6;
+            P6-->R5;
+    ```
+    - Ex)
+    - There are two processes P1, P2 working on their job
+    - There are one CD recorder, and CD ROM, P1 and P2 need two resources to finish its job
+        1. T1: P1 request CCD ROM and granted
+        2. T1: P2 request CD recorder and granted
+        3. T2: P1 request CD recorder without release CD ROM. Since CD recorder is hold by P2. P1 be waiting state (block state) waiting for CD recorder leased by P2
+        4. T3: P2 request CD ROM but it is not released by P1, P2 go to waiting state(block state)
+        5. P1 and P2 will stay in block state forever!
+    - Four Strategies fro dealing with Deadlock
+        1. Just ignore
+        2. Detection and recover (detection algorithm)
+        3. Dynamic Avoidance by careful allocation (bankers algorithm)
+        4. Provention - by negating one of the four conditions necessary for deadlock
+            1. Mutual exclusion
+            2. Circular Wait
+            3. Hold and Wait
+            4. No Preemptive
 - **Input / Output**
+- - Operating System manages all kinds of I/O devices such as keyboards, monitors, printers, and so on
+    - Operating System has I/O subsystems for managing I/O devices
+    - I/O subsystems consist of
+        - A memory-management components - Buffering, Spooling and Caching
+        - General Device Drivers interface
+        - Drivers fro specific hardware
+        - Processor for specific hardware
+    - Operating System Controls all I/O devices by
+        - Issue commands to devices (read/Write)
+        - Catch interrupts from devices (when device is ready to read or write)
+        - OS also provide interface between the devices and the rest of the system
 - **Structure of Operating System**
     - Operating system structure
-- **Monolithic System**
-- **Layered System**
-- **Microkernels**
-- **Virtual Machine**
-- **Protection and security**
-- **Virtualization**
+        - Monolithic
+            - Written collection of procedures, each can call any other ones whenever it needs it
+            - Each procedure in the system has a well defined interface in terms of parameters and results and each on eis free to call any other one, if the latter provides some useful computation that the former needs
+            - possible to have structure for a monolithic system
+            - Possible Structure for a monolithic system
+                - Main program - invoke service functions
+                - Service functions - Carry out the system calls
+                - Utility Functions - helps service functions
+            - ```mermaid
+              graph TD;
+                  MP --> SP1;
+                  MP --> SP2;
+                  MP --> SP3;
+                  MP --> SP4;
+                  MP --> SP5;
+                  SP1-->UP1;
+                  SP1-->UP2;
+                  SP2-->UP2;
+                  SP2-->UP3;
+                  SP3-->UP4;
+                  SP3-->UP5;
+              ```
+        - Layered system
+             - Operating System is divided into several layers and each layer works for different rule.
+                  - Layer 0 - Process management
+                  - Layer 1 - memory management
+                  - Layer 2 - Inter-process communication
+                  - Layer 3 - Input / Output Management
+                  - Layer 4 - Deadlock Management
+                  - Layer 5 - User Program
+                  - Layer 6 - System operator process
+        - Microkernels
+            - With the layered approach, the designers have a choice where to draw the kernel-user boundary
+            - Traditionally, all the layers went in the kernel, but it is not necessary since one bug in kernel might cause entire system down
+            - Various researchers studied the number of bugs (logical) per 1000 lines  of code
+            - About 5 million lines of codes for layered kernel likely to contain 10000 to 50000 kernel bugs
+            - Not all of bugs are fatal
+            - The basic idea is this: To achieve high reliability by splitting the operating system up into small well-defined module
+            - only one of module (micro kernels) run in kernel mode and the rest run as users mode
+            - Ex) I/O device driver becomes part of OS which might cause system down
+                - A bug in the audio driver will cause the sound to be garbled or stop, but not crash the computer
+        - Virtual Machine
+            - Virtual machine monitor(hypervisor) runs on the bare hardware and does multiprogramming, by providing several virtual machines..
+            - Each virtual machines are exact copies of the bare hardware, including kernel/user
+        - Client-Server Module
+        - ExoKernels
