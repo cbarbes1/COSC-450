@@ -382,5 +382,9 @@ We consider os as
         - Virtual Machine
             - Virtual machine monitor(hypervisor) runs on the bare hardware and does multiprogramming, by providing several virtual machines..
             - Each virtual machines are exact copies of the bare hardware, including kernel/user
+            - Different virtual machine can run different operating system
+            - Example of Virtualization
+                - Many companies have traditionally run their mail servers, web servers, FTP servers and other servers on seperate computer with different operating system.
+                - Several server can run on the same machine without having a crash of one server bring down the rest since each server rinnung on different virtual machine
         - Client-Server Module
         - ExoKernels
