@@ -1,15 +1,26 @@
 # Mini Test 1
 ## Lecture Note 1
+## Table of Contents
+- What is Operating System
+- Macroscopic view of computer system
+- Computer Structure - Von Neumann Architecture
+- Von Neumann Bottleneck
+- Instruction Cycle
+- History of Computer System
+    - First Generation - vacuum tubes and plugboards
+    - Second Generation - Transistors and Batch system
+    - Third Generation - IC and Programming
+    - Fourth Generation - Personal Computer and LSI (VLSI, ULSI)
+    - Fifth Generation - Mobile Computers
 ### Operating System
-`A protected software provided interface between hardware and software`
-
-*Macroscopic View* - Processor, Memory, io devices
-
-Physical Devices - Chips, wires, etc
-
-Micro architecture - groups of physical devices that form functional units
-
-Machine Language - Execute some set of instructions
+- A protected software provided interface between hardware and software
+- Modern Complex Computer System
+    - **Macroscopic View** - Processor, Memory, io devices
+### Hardware
+- *Macroscopic View* - Processor, Memory, io devices
+- Physical Devices - Chips, wires, etc
+- Micro architecture - groups of physical devices that form functional units
+- Machine Language - Execute some set of instructions
 
 **Von Neumann Bottleneck** - The processor and memory are seperate. since the speed of transfer is slower than calculation speed there is a bottleneck. This would be a throughput limitations. Throughput is how much data can be transferred in a certain amount of time.
 
@@ -38,6 +49,25 @@ We consider os as
 - Transistors
 - IC (integrated circuit) 
 - LSI or VLSI ( large scaled integrated circuit, very large scaled integrated circuit)
+#### First Generation( 1945 ~ 1955) - Vacuum tubes and plugboards
+- Vacuum tubes build calculating engines
+- All Programs done by machine language written by wiring up plugboard to control the machines basic functions
+#### Second Generation (1955 ~ 1965) - transistors and batch system 
+- Transistors invented in mid 1950s. computer become more reliable since vacuum tubes are replaced by transistors smaller and faster - mainframes
+- To run a job (batch system) - for machine efficiency
+    1. Programmer write a program on paper (coding paper)
+    2. Punch a program on cards (one card for one line of program)
+    3. Brings cards to the input room and submit to one of operator
+    4. If fortran comiler is needed, operator bring the compiler from the cabiner and load into the computer
+    5. wait for output
+#### The third generation (1965 ~ 1980) - IC and MultiProgramming 
+- maintaining two different products was expensive proposition
+- Major features:
+  - IBM system/360 was the first major computer to use IC (integrated Circuit)
+  - To improve cpu utilization
+      - Uses multiprogramming technique to save CPU time
+      - Uses spooling (simultaneous peripheral operation on line) technique to save cpu time
+      - Uses time sharing system to share cpu time between users using terminal
 #### Multi-Programming
 - Multiple jobs (processes) are loaded into RAM and run concurrently.
 - Once CPU become available, one of job (from the ready queue) are selected by short term scheduler, load its current status (from its process table) to CPU and start to run.
@@ -47,6 +77,22 @@ We consider os as
 - Example: Network Printers
     - The process in which info to be printed is stored temporarily in a file, the printing being carried out later.
     - used to prevent slow printer from holding up the system and enable printer to be shared.
+#### Fourth Gen (1980 ~ Present) - personal computer built with LSI(Large Scale IC), VLSI, ULSI
+- The Development of LSI circuit (contain thousands of transistors) make reduce the price of computer, which make available to build personal computer
+- User typing in commands from the keyboard
+    - CP/M
+    - DOS (microsoft)
+- Graphical user interface (gui)
+    - Apple with GUI
+    - Linux/SUSE, ubuntu, redhot
+    - Mac- macosx
+    - ms - window95, 98, 2000, xp, window vista, window 7, window 8, window 10
+#### Fifth gen (1990 ~ Present) - Mobile Computers
+- Since the real smartphone appears mid-1990s, thera re several operating systems for smartphone.
+    - Symbian OS
+    - RIMS blackberry os
+    - Android OS by Google
+    - IOS
 #### Operating System ZOO
 - Mainframe op
 - Server op
@@ -57,7 +103,30 @@ We consider os as
 - Smart car op
 - smart phone op
 ## Lecture Note 2
+## Table of Contents 
+- Computer SYstem Architecture
+    - CPU
+    - Interrupt and Implementation
+    - Memory Hierarchy
+    - Input/Out devices
+    - Buses - parallel and serial buses
+    - Single and Microprocessor system types
+- Multiprocessor system types
+    - Multiprocessor system with single core chip
+    - Multiprocessor system with multiple core chip
+    - symmetric multiprocessor(SMP) - one physical memory shared
+    - Non-uniform memory access(NUMA) - each processor has local memory, but share one physical address space
+    - Clustered system
+        - Asymmetric clustering - one machine is in hot standby mode - monitoring active server
+        - Symmetric Clustering - monitoring each other
+- Multiprogramming
+- Operaing system operation
+    - Dual-mode and multimode operations 
 ### Computer System Architecture
+- A modern general purpose computer system consists of one or more cpus and a number of device controllers connected through a common bus that provides access between I/O devices and shared memory (CPU + MEMORY + I/O devices
+- Each device controller is in charge of a specific type of I/O device
+- depending on controller more than one device can be connected
+- a device controller maintains some local buffer storage and a set of special purpose registers
 ---
 #### CPU
 - The CPU is the brain of the computer
