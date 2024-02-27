@@ -96,3 +96,65 @@
 ## Process Termination in Linux
 - WHen a process creates an
 ## Android Process Hierarchy
+
+
+# Note 7
+
+## Preview
+- Scheduler
+    - Long-Term, Short-Term(CPU), Memory
+- Scheduling Criteria
+- CPU Scheduling (Short-Term Scheduler)
+    - FCFS
+    - Shortest job first
+    - round robin
+    - Priority Queue
+    - Guarenteed Scheduling
+    - Lottery Scheduling
+## CPU Scheduling 
+- In a system with a single CPU, only one process can run at a time
+- If CPU is busy for serving
+
+- Objective of multiprogramming is to have some process running at all times, to maximize cpu utilization
+- CPU scheduler will select a process from ready queue by scheduling algorithm
+- Save pointer to process tables for ready state processes
+- Level of Scheduler
+    - Long-Term Scheduler: Select process form job queue and place into memory
+    - Short-Term Scheduler
+    - Memory Scheduler
+ 
+## Process Scheduling
+- Once the process is allocate din the memory and executing on CPU, one of several events could occur:
+
+
+
+## Preemptive vs. Nonpreemptive Scheduling
+
+
+## Scheduling Criteria
+- many criteria
+- CPU utilization - try to make cpu as busy as possible
+- Throughput - try to finish as many as pos
+- turnaround time - process start run and starting time and waiting time.
+- waiting time - Until finish job how long until finish
+- Response time
+
+## Process Scheduling
+A process migrates to the ready queue from various wait queues throughout its lifetime
+
+
+## FCFS
+- non-preemptive
+- easily managed with FIFO
+- when process enter the ready queue, its process table (process control block) is linked onto the tall of the queue
+- when cpu is free, it is allocated to the process at the head of the queue. the running process is then removed from the queue
+- Drawbacks:
+    - Average wait time could be long
+ 
+## Shortest job first
+- Shortest job first algo
+- when cpu available, assigned to the process that has shorted burst time
+- if next cpu burst of two processes are the same, FCFS sheduling is used to break the tie
+
+
+
