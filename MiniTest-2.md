@@ -156,5 +156,72 @@ A process migrates to the ready queue from various wait queues throughout its li
 - when cpu available, assigned to the process that has shorted burst time
 - if next cpu burst of two processes are the same, FCFS sheduling is used to break the tie
 
+# Inter-Process Communication
+- Race Condition
+- Critical Section( or region)
+- Solutions for mutual exclusion in a critical section
+    - With Busy Waiting
+        - disabling instructions
+ 
+- Three issues in interprocess communication
+- how one process can pass info to another with IPCS
+- How to make sure two or more processes do not get into the critical section
+- Syncronization
+## Race Condition
+- Race condition
+    - when two or more proesses are reading and writing some shared data and the final result depends on who runs precisely
+    - Critcal Section (critical region)
+- Mutual Exclusion
 
+_ how to avoid race condition
+    - Mutual exclusion some way of making sure that if one process is using a shared variable or file the other processes will be exluded from doing the same thing
+- Solution
+    1. No two processes may be simultaneously inside their critical regions - mutual exclusion
+    2. No process running outside its critical region may bloack other processes
+    3. no process should have to wait forever to enter critical region
+    4. No assumptions may be made about speeds or the number of cpus
+Non deterministic polynomial time (NP)
+never can have solution if we hace certain speed of cpu or certain number of cpu
+Two approaches for mutual exclusion solutions
+    - Busy wait: A process wil wait until resource become available o
+    - Sleep and wakeup:
+Run => Ready => Run
+block => Ready
 
+## Mutual Exclusion with Busy waiting
+- Each process has time term. a process keep checking the possibility to get into into critical section
+- Mutual Exclusion with Busy Waiting
+    - Disabling Interrupts - non
+ 
+## Disabling Interrupt - Nonprimitive kernel
+- Once a process get into the critical section, interrupts set the disable
+- Other process cannot get CPU time until the process finish its job in the critical section
+## Loack Variable
+- There are variable called "Lock"
+    - A process can enter in its critical section when Lock = 0
+    - Lock = 0 means no process is currently running in the critical section
+- Strict Alternation
+
+## Peterson's Solution
+- instead of having 1 control variable we have 3 control variable
+- Only works on two processes that alternate between their critical sections
+- THe processes are numbered P0 and P1
+
+## Test and Set Lock - Hardware Solution
+- SInce TSL instruction is a hardware instruction. the operations of reading the lock and storing into register are guarenteed to be invisible
+- Instruction Test and set lock
+    - Read the content of the memory address of lock into register RX
+## Memory Barriers 
+- Two general models
+    - Strongly ordered memory - all processes see when memory modified by another proces
+    - Weakly ordered memory - may not be visible to other process
+- Provide instructions that can force any hcangeds in memory 
+- such instructions are known as memory barriers or memory fences
+force an ordering constraint on memory operations issued before and after the barrier isntruction
+## Atomic variable
+- all threads or processes see actions occurring instantaneously
+# priority inversion Problem
+- We find solution
+- what if short term scheduler use priority
+- That cause problem
+- what if pl is on critical section
